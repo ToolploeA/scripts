@@ -16,3 +16,10 @@ alias ll='ls -l'
 # ambpdb in ambertools
 # use: pdb md.rs > md.pdb
 alias pdb='ambpdb -p prmtop -c '
+
+# conda
+alias condaac='conda activate '
+alias condade='conda deactivate'
+
+# set notify
+set -o notify
