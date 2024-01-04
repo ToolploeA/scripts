@@ -23,3 +23,23 @@ alias condade='conda deactivate'
 
 # set notify
 set -o notify
+
+# do a new job when a job done
+# use: listen-wait <PID to wait> <cmd for the new job>
+# eg: listen-wait 1234 ls -l
+function listen-wait() {
+    local PID=$1
+    shift
+    local flag=1
+    local result=1
+    while [ "$flag" -eq 1 ]
+    do
+        sleep 1
+        local PID_EXIST=$(ps -u | awk '{print $2}' | grep -w $PID)
+        if [ ! $PID_EXIST ]; then
+            flag=0
+        fi
+    done
+    echo "PID: $PID done."
+    $@
+}
