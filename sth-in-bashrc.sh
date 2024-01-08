@@ -14,7 +14,7 @@ alias lt='ls -lth'
 alias ll='ls -l'
 
 # ambpdb in ambertools
-# use: pdb md.rs > md.pdb
+# usage: pdb md.rs > md.pdb
 alias pdb='ambpdb -p prmtop -c '
 
 # conda
@@ -25,7 +25,7 @@ alias condade='conda deactivate'
 set -o notify
 
 # do a new job when a job done
-# use: listen-wait <PID to wait> <cmd for the new job>
+# usage: listen-wait <PID to wait> <cmd for the new job>
 # eg: listen-wait 1234 ls -l
 function listen-wait() {
     local PID=$1
@@ -42,4 +42,12 @@ function listen-wait() {
     done
     echo "PID: $PID done."
     $@
+}
+
+# solve the problem: ORCA parallel calc must be called with full path
+# need to add orca in PATH and LD_LIBRARY_PATH for normal ORCA run
+# usage: runorca <orca.inp> ...
+# eg: runorca orca.inp > orca.log
+function runorca() {
+    $('which' orca) $@
 }
