@@ -10,7 +10,7 @@ function getpdb() {
 alias topu='top -u $USER -d 1 -c'
 
 # ls
-alias lt='ls -lth'
+alias lt='ls -lth' # sort by modified time
 alias ll='ls -l'
 
 # ambpdb in ambertools
