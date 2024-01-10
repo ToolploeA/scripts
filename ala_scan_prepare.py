@@ -5,6 +5,8 @@
 
 # create prepare file for amberMD to perform ALA scan
 
+# still in development !!!
+
 import os
 from multiprocessing import Pool
 
