@@ -31,11 +31,10 @@ function listen-wait() {
     local PID=$1
     shift
     local flag=1
-    local result=1
     while [ "$flag" -eq 1 ]
     do
         sleep 1
-        local PID_EXIST=$(ps -u | awk '{print $2}' | grep -w $PID)
+        local PID_EXIST=$(ps -e | awk '{print $1}' | grep -w $PID)
         if [ ! $PID_EXIST ]; then
             flag=0
         fi
