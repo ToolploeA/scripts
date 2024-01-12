@@ -27,6 +27,8 @@ set -o notify
 # do a new job when a job done
 # usage: listen-wait <PID to wait> <cmd for the new job>
 # eg: listen-wait 1234 ls -l
+# could not use in nohup cmd, because nohup can only run program, not function
+# if want to use in nohup, need to make a .sh file and source this part in the .sh file
 function listen-wait() {
     local PID=$1
     shift
