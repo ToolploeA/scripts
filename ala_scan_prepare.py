@@ -27,7 +27,7 @@ def ala_scan_prepare(pdb_file, scan_list, leap_file = None, nprocs = None):
             f.write(''.join(file))
 
         if leap_file:
-            os.chidr(f'scan_{item}')
+            os.chdir(f'scan_{item}')
             os.system('tleap -f ../leap.in')
             os.chdir('../')
 
