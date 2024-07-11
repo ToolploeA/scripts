@@ -52,3 +52,11 @@ function listen-wait() {
 function runorca() {
     $('which' orca) $@
 }
+
+# an abbr. for mkdir & cd
+# usage: mkcd <...>
+function mkcd() {
+    mkdir $1
+    cd $1
+}
+
