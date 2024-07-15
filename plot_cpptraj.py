@@ -10,13 +10,19 @@ from glob import iglob
 
 def plot_dat(file):
 	with open(file, 'r') as f:
-		f.readline()
+		head = f.readline()
 		data = f.readlines()
-	l = []
+	num_line = len(head.strip().split()) - 1
+	l = [[] for x in range(num_line)]
 	for line in data:
-		l.append(float(line.strip().split()[-1]))
+		sp = line.strip().split()[1:]
+		for line_idx in range(num_line):
+			l[line_idx].append(float(sp[line_idx]))
+	
 	plt.figure(dpi = 300)
-	plt.plot(l)
+	for line_idx in range(num_line):
+		plt.plot(l[line_idx], label = head.strip().split()[line_idx + 1])
+	plt.legend()
 	plt.savefig(f'{file[:-4]}.png')
 	plt.close()
 
